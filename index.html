@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simple Conditional Calculator</title>
+    <style>
+        body { font-family: sans-serif; padding: 20px; }
+        input, select, button { padding: 10px; margin: 5px; font-size: 16px; }
+        .result { margin-top: 20px; font-weight: bold; font-size: 20px; color: blue; }
+    </style>
+</head>
+<body>
+
+    <h2>FOCP Assignment: Simple Calculator</h2>
+    <p>Enter two numbers and choose an operator.</p>
+
+    <input type="number" id="num1" placeholder="Enter first number">
+    
+    <select id="operator">
+        <option value="+">+</option>
+        <option value="-">-</option>
+        <option value="*">*</option>
+        <option value="/">/</option>
+    </select>
+
+    <input type="number" id="num2" placeholder="Enter second number">
+    
+    <button onclick="calculate()">Calculate</button>
+
+    <div class="result" id="output">Result will appear here</div>
+
+    <script>
+        function calculate() {
+           
+            let n1 = parseFloat(document.getElementById("num1").value);
+            let n2 = parseFloat(document.getElementById("num2").value);
+            let op = document.getElementById("operator").value;
+            let result;
+
+            if (isNaN(n1) || isNaN(n2)) {
+                result = "Please enter valid numbers!";
+            } else {
+                if (op === '+') {
+                    result = n1 + n2;
+                } else if (op === '-') {
+                    result = n1 - n2;
+                } else if (op === '*') {
+                    result = n1 * n2;
+                } else if (op === '/') {
+                    if (n2 === 0) {
+                        result = "Cannot divide by Zero";
+                    } else {
+                        result = n1 / n2;
+                    }
+                } else {
+                    result = "Invalid Operator";
+                }
+            }
+
+            // 3. Print the result
+            document.getElementById("output").innerText = "Result: " + result;
+            
+            // Optional: Log to console as well
+            console.log("Calculation performed: " + n1 + " " + op + " " + n2 + " = " + result);
+        }
+    </script>
+
+</body>
+</html>
